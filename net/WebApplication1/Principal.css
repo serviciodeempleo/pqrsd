@@ -1,0 +1,141 @@
+﻿body
+{
+}
+
+.celdalogoministerio
+{
+	background-color: #E6E7E8;
+	text-align: right;
+	width: 950px;
+	padding-right: 15px;
+	height: 1px;
+}
+
+
+.Contorno
+{
+	background-color: #FFFFFF;
+	margin:0 auto 0 auto;
+	width: 950px;
+}
+
+
+.celdaLogred
+{
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #333333;
+}
+
+.LetraNormal
+{
+	font-family: Arial;
+	font-size: 14px;
+	color: #333333;
+	text-align: justify;
+}
+
+.LetraNormalNegrilla
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #333333;
+	text-align: justify;
+	font-style: normal;
+	font-weight: bold;
+}
+
+
+.LetraTitulo
+{
+	font-family: Arial;
+	font-size: 16px;
+	color: #C90217;
+	font-weight: bold;
+}
+
+.LetraErro
+{
+	color: #FF0000;
+	text-decoration: underline;
+	font-family: Arial;
+	font-size: 10px;
+}
+
+.TablaBorde
+{
+	border: 1px solid #C0C0C0;
+}
+
+.Campo
+{
+	font-family: Arial;
+	font-size: 13px;
+	color: #333333;
+	text-align: justify;
+	padding: 5px;
+	margin: 5px;
+}
+
+.barralta  
+{
+	border-top-style: solid; 
+	border-top-width: 1px; 
+	border-top-color: #800000; 
+	font-family: Arial;
+	font-size: 13px;
+	color: #333333;
+	text-align: justify;
+	padding: 5px;
+	margin: 5px;}
+
+.LetraTituloVerdeNegrilla
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #33CC33;
+	text-align: justify;
+	font-style: normal;
+	font-weight: bold;
+}
+
+
+.LetraTituloRojaNegrilla
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #FF0000;
+	text-align: justify;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.controlesderecha
+{
+	background-color: #FFFFFF;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.boton{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	/*box-shadow:inset 0px 1px 0px 0px #ffffff;*/
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	/*border-radius:6px;*/
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#333333;
+	font-family:arial;
+	font-size:14px;
+	padding:1px 1px;
+	text-decoration:none;
+	/*text-shadow:1px 1px 0px #ffffff;*/
+}.boton:hover {
+	background-color:#dfdfdf;
+}.boton:active {
+	position:relative;
+	top:1px;
+}

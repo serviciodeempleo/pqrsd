@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Base.master.cs" Inherits="WebApplication1.Base" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+    <link  rel="stylesheet" type="text/css" href="Principal.css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="Contorno">
+        <table>
+               <tr>
+                    <td class = "celdalogoministerio" colspan = "3">
+                        <asp:Image ID="imgPrincipalMinisterio" runat="server" 
+                            ImageUrl="~/bg_banderin.jpg" Height="73px" Width="1000px" />
+                    </td>
+               </tr>
+               <tr>
+                    <td colspan = "3"><br />    <br /></td>
+               </tr>
+               <tr>
+                    <td class = "celdaLogred">
+                        <asp:Image ID="imgLogSPE" runat="server" height="125" width="299" 
+                            ImageUrl="~/logo_SPE_cabezote_302x128.png"/>
+                    </td>
+                    <td>
+                        <table class="TablaBorde">
+        <tr>
+            <td colspan="2">
+                <asp:Label ID="Label3" runat="server" CssClass = "LetraTitulo">Usuario Registrado</asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <asp:Label ID="lblUsuario" CssClass = "LetraNormal" runat="server" Text="Usuario*"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtUsuario" CssClass = "LetraNormal" runat="server" MaxLength="20" Width="100px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtUsuario" ErrorMessage="*" ValidationGroup="Registro"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="lblContrasegna" CssClass = "LetraNormal" runat="server" Text="Contraseña*"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtContrasegna" CssClass = "LetraNormal" runat="server" MaxLength="20" TextMode="Password" Width="100px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtContrasegna" ErrorMessage="*" ValidationGroup="Registro"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="12">
+                <br />
+                <asp:Button ID="btnAcceder" runat="server" Text="Acceder" 
+                    onclick="btnAcceder_Click" CssClass="boton"/>
+                <br />
+                <asp:Label ID="lblErrorLogin" runat="server" CssClass = "LetraErro"></asp:Label>
+            </td>
+        </tr>
+    </table>
+                    </td>
+                </tr>
+        </table>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

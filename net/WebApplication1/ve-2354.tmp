@@ -1,0 +1,302 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Xml.Linq;
+
+
+using System.Text;
+using System.Net.Mail;
+using System.Net;
+
+using netveloper.DataManager;
+using System.Data.SqlClient;
+
+namespace WebApplication1
+{
+    public partial class Respuestas : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ConsultaModelos();
+            }
+        }
+
+
+
+        public void ConsultaModelos()
+        {
+            MSSQL.Connection("");
+            DataSet DSModelos = new DataSet();
+            DSModelos = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "ConsultaModelos");
+            MSSQL.Close();
+            if (DSModelos.Tables[0].Rows.Count > 0)
+            {
+                DataTable dtmodelos = DSModelos.Tables[0];
+                dplModelos.DataSource = dtmodelos;
+                dplModelos.DataTextField = "titulo";
+                dplModelos.DataValueField = "codigo";
+                dplModelos.DataBind();
+            }
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string Entro = "NO";
+            lblerror.Text = "";
+            string resultado = "negativo";
+            try
+            {
+
+                if (txtCedula.Text != "")
+                {
+                    Entro = "SI";
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@codigo", SqlDbType.Int);
+                    param[0].Value = dplModelos.SelectedValue;
+                    param[1] = new SqlParameter("@numero", SqlDbType.VarChar, 50);
+                    param[1].Value = txtCedula.Text;
+                    MSSQL.Connection("");
+                    DataSet DSResp = new DataSet();
+                    DSResp = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "ArmarRespuestaNumero", param);
+                    MSSQL.Close();
+                    if (DSResp.Tables[0].Rows.Count == 1)
+                    {
+                        DataTable dtresp = DSResp.Tables[0];
+                        DataRow drresp = dtresp.Rows[0];
+                        lblrespuesta.Text = drresp["respuesta"].ToString();
+                        resultado = lblrespuesta.Text;
+                    }
+                }
+
+                if (txtemail.Text != "")
+                {
+                    Entro = "SI";
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@codigo", SqlDbType.Int);
+                    param[0].Value = dplModelos.SelectedValue;
+                    param[1] = new SqlParameter("@email", SqlDbType.VarChar, 50);
+                    param[1].Value = txtemail.Text;
+                    MSSQL.Connection("");
+                    DataSet DSResp = new DataSet();
+                    DSResp = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "ArmarRespuesta", param);
+                    MSSQL.Close();
+                    if (DSResp.Tables[0].Rows.Count == 1)
+                    {
+                        DataTable dtresp = DSResp.Tables[0];
+                        DataRow drresp = dtresp.Rows[0];
+                        lblrespuesta.Text = drresp["respuesta"].ToString();
+                        resultado = lblrespuesta.Text;
+                    }
+                }
+                if (Entro == "NO")
+                {
+                    lblerror.Text = "Se requiere el Email o la Cédula para encontrar al Ciudadano.";
+                }
+                else
+                {
+                    SqlParameter[] paramRegistro = new SqlParameter[4];
+                    paramRegistro[0] = new SqlParameter("@Tema", SqlDbType.Int);
+                    paramRegistro[0].Value = dplModelos.SelectedValue;
+                    paramRegistro[1] = new SqlParameter("@usuaro", SqlDbType.Int);
+                    paramRegistro[1].Value = Session["USR_Codigo"];
+                    paramRegistro[2] = new SqlParameter("@email", SqlDbType.VarChar, 50);
+                    paramRegistro[2].Value = txtemail.Text;
+                    paramRegistro[3] = new SqlParameter("@resultado", SqlDbType.VarChar, 2000);
+                    paramRegistro[3].Value = resultado;
+                    
+                    MSSQL.Connection("");
+                    DataSet DSRespReg = new DataSet();
+                    DSRespReg = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "RegistroRespuesta", paramRegistro);
+                    lblMensajeFinal.Text = "Termino la consulta para el usurio con Correo Electrónico " + txtemail.Text + ". Si el mensaje es adecuado por favor copielo y peguelo para dar respuesta a los PQRSD";
+                    /*Clipboard.SetDataObject(txtrespuesta.Text);*/
+                    if (dplModelos.SelectedValue == "1")
+                    {
+                        SqlParameter[] param = new SqlParameter[3];
+                        param[0] = new SqlParameter("@codigo", SqlDbType.Int);
+                        param[0].Value = dplModelos.SelectedValue;
+                        param[1] = new SqlParameter("@email", SqlDbType.VarChar, 50);
+                        param[1].Value = txtemail.Text;
+                        param[2] = new SqlParameter("@numerodocumento", SqlDbType.VarChar, 20);
+                        param[2].Value = txtCedula.Text;
+                        MSSQL.Connection("");
+                        DataSet DSResp = new DataSet();
+                        DSResp = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "Respuestasec", param);
+                        MSSQL.Close();
+                        if (DSResp.Tables.Count > 0)
+                        {
+                            if (DSResp.Tables[0].Rows.Count == 1)
+                            {
+                                DataTable dtresp = DSResp.Tables[0];
+                                DataRow drresp = dtresp.Rows[0];
+                                enviarcorreo(txtemail.Text, drresp["respuesta"].ToString());
+
+                            }
+                        }
+                        else
+                        {
+                            lblMensajeFinal.Text = "El correo electrónico no esta registrado en la plataforma";
+                        }
+                    }
+
+                    if (dplModelos.SelectedValue == "2" || dplModelos.SelectedValue == "3")
+                    {
+                        SqlParameter[] param = new SqlParameter[2];
+                        param[0] = new SqlParameter("@codigo", SqlDbType.Int);
+                        param[0].Value = dplModelos.SelectedValue;
+                        param[1] = new SqlParameter("@email", SqlDbType.VarChar, 50);
+                        param[1].Value = txtemail.Text;
+                        MSSQL.Connection("");
+                        DataSet DSResp = new DataSet();
+                        DSResp = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "Respuestasecotr", param);
+                        MSSQL.Close();
+                        if (DSResp.Tables.Count > 0)
+                        {
+                            if (DSResp.Tables[0].Rows.Count == 1)
+                            {
+                                DataTable dtresp = DSResp.Tables[0];
+                                DataRow drresp = dtresp.Rows[0];
+                                enviarcorreo(txtemail.Text, drresp["respuesta"].ToString());
+                            }
+                        }
+                        else
+                        {
+                            lblMensajeFinal.Text = "El correo electrónico no esta registrado en la plataforma";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lblerror.Text = ex.Message;
+            }
+        }
+
+        public void enviarcorreo(string emaildestino, string Mensaje)
+        {
+
+            //Creamos un nuevo Objeto de mensaje
+            System.Net.Mail.MailMessage mmsg = new System.Net.Mail.MailMessage();
+
+            //Direccion de correo electronico a la que queremos enviar el mensaje
+            mmsg.To.Add(emaildestino);
+            //Nota: La propiedad To es una colección que permite enviar el mensaje a más de un destinatario
+
+            //Asunto
+            mmsg.Subject = "RedEmpleo: Información Importante";
+            mmsg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+            //Direccion de correo electronico que queremos que reciba una copia del mensaje
+            //mmsg.Bcc.Add("destinatariocopia@servidordominio.com"); //Opcional
+
+            //Cuerpo del Mensaje
+            mmsg.Body = Mensaje;
+            mmsg.BodyEncoding = System.Text.Encoding.UTF8;
+            mmsg.IsBodyHtml = true; //Si no queremos que se envíe como HTML
+
+
+            //Adjuntar un archivo
+            //Attachment archivo = new Attachment(@"D:\PQRs\recomendaciones.pdf");
+            //mmsg.Attachments.Add(archivo);
+
+            //Correo electronico desde la que enviamos el mensaje
+            mmsg.From = new System.Net.Mail.MailAddress("soporte.tecnologia@serviciodeempleo.gov.co");
+
+
+            /*-------------------------CLIENTE DE CORREO----------------------*/
+
+            //Creamos un objeto de cliente de correo
+            System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient();
+
+            //Hay que crear las credenciales del correo emisor
+            cliente.Credentials = new System.Net.NetworkCredential("AKIAJTOOHYHOAD2EWJRQ", "AnfYW5pl6hn3uZrryWNPmhUeNZ64z4Lu18xGHUyPGya+");
+
+            //Lo siguiente es obligatorio si enviamos el mensaje desde Gmail
+
+            cliente.Port = 465;
+            /*cliente.EnableSsl = true;
+            */
+
+            cliente.Host = "email-smtp.us-west-2.amazonaws.com"; //Para Gmail "smtp.gmail.com";
+
+
+
+            /*-------------------------ENVIO DE CORREO----------------------*/
+
+            try
+            {
+                //Enviamos el mensaje      
+                cliente.Send(mmsg);
+            }
+            catch (System.Net.Mail.SmtpException ex)
+            {
+                lblerror.Text = ex.Message;
+            }
+
+
+        }
+
+        protected void btnEjecutarConsulta0_Click(object sender, EventArgs e)
+        {
+            if (txtCedula.Text == "" && txtemail.Text == "")
+            {
+                lblerror.Text = "Se requiere del Email o de la cedula para realizar la consulta";
+            }
+
+            if (txtCedula.Text != "")
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@Cedula", SqlDbType.VarChar, 50);
+                param[0].Value = txtCedula.Text;
+                MSSQL.Connection("");
+                DataSet DSResp = new DataSet();
+                DSResp = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "ConsultaporDocumento", param);
+                MSSQL.Close();
+                if (DSResp.Tables[0].Rows.Count >= 1)
+                {
+                    DataTable dtResp = new DataTable();
+                    dtResp = DSResp.Tables[0];
+                    tblResultado.DataSource = dtResp;
+                    tblResultado.DataBind();
+                    txtemail.Text = DSResp.Tables[0].Rows[0].ItemArray[9].ToString();
+                }
+                else
+                {
+                    lblMensajeFinal.Text = "No se encontró información con el número de identificación ingresado";
+                }
+            }
+            else if (txtemail.Text != "")
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@Email", SqlDbType.VarChar, 50);
+                param[0].Value = txtemail.Text;
+                MSSQL.Connection("");
+                DataSet DSResp = new DataSet();
+                DSResp = MSSQL.ExecuteDataset(CommandType.StoredProcedure, "ConsultaporEmail", param);
+                MSSQL.Close();
+                if (DSResp.Tables[0].Rows.Count >= 1)
+                {
+                    DataTable dtResp = new DataTable();
+                    dtResp = DSResp.Tables[0];
+                    tblResultado.DataSource = dtResp;
+                    tblResultado.DataBind();
+                }
+                else
+                {
+                    lblMensajeFinal.Text = "No se encontró información con el Email ingresado";
+                }
+            }
+
+        }
+    }
+}

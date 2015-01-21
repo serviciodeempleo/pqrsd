@@ -1,0 +1,35 @@
+<publishData>
+  <publishTarget publishUrl="C:\inetpub\wwwroot\RespuestaPQR\">
+    <file relUrl="logo_SPE_cabezote_302x128.png" publishTime="07/04/2013 15:18:28" />
+    <file relUrl="index.aspx" publishTime="07/15/2013 09:45:33" />
+    <file relUrl="logo_mintrabajo_253x45.png" publishTime="07/04/2013 15:18:28" />
+    <file relUrl="Principal.css" publishTime="12/22/2014 10:21:01" />
+    <file relUrl="Base.Master" publishTime="11/25/2014 17:57:22" />
+    <file relUrl="Web.config" publishTime="01/07/2015 11:22:57" />
+    <file relUrl="Interna.Master" publishTime="11/25/2014 17:57:22" />
+    <file relUrl="Respuestas.aspx" publishTime="12/30/2014 15:18:47" />
+    <file relUrl="bin/WebApplication1.dll" publishTime="01/08/2015 16:25:59" />
+    <file relUrl="bin/WebApplication1.pdb" publishTime="01/08/2015 16:25:58" />
+    <file relUrl="bin/Interop.ADODB.dll" publishTime="12/19/2014 10:36:16" />
+    <file relUrl="MenuOPE.aspx" publishTime="12/30/2014 15:04:48" />
+    <file relUrl="bg_banderin.jpg" publishTime="11/20/2014 13:56:03" />
+    <file relUrl="llamadas.aspx" publishTime="12/02/2014 14:18:26" />
+    <file relUrl="bin/Interop.CDO.dll" publishTime="12/19/2014 10:36:16" />
+    <file relUrl="Default.aspx" publishTime="07/10/2013 09:29:06" />
+  </publishTarget>
+  <publishTarget publishUrl="C:\inetpub\wwwroot\publicarpqrs\">
+    <file relUrl="logo_mintrabajo_253x45.png" publishTime="07/04/2013 15:18:28" />
+    <file relUrl="logo_SPE_cabezote_302x128.png" publishTime="07/04/2013 15:18:28" />
+    <file relUrl="index.aspx" publishTime="07/15/2013 09:45:33" />
+    <file relUrl="MenuOPE.aspx" publishTime="07/23/2013 10:08:47" />
+    <file relUrl="Principal.css" publishTime="07/18/2013 11:33:18" />
+    <file relUrl="Base.Master" publishTime="07/18/2013 11:35:21" />
+    <file relUrl="Web.config" publishTime="07/15/2013 10:43:23" />
+    <file relUrl="Interna.Master" publishTime="07/18/2013 11:34:21" />
+    <file relUrl="bin/WebApplication1.dll" publishTime="07/23/2013 14:49:05" />
+    <file relUrl="bin/WebApplication1.pdb" publishTime="07/23/2013 14:49:04" />
+    <file relUrl="Respuestas.aspx" publishTime="07/18/2013 11:32:15" />
+    <file relUrl="llamadas.aspx" publishTime="07/23/2013 12:28:04" />
+    <file relUrl="Default.aspx" publishTime="07/10/2013 09:29:06" />
+  </publishTarget>
+</publishData>

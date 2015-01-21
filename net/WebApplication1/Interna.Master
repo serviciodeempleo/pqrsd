@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Interna.master.cs" Inherits="WebApplication1.Interna" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+    <link  rel="stylesheet" type="text/css" href="Principal.css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="Contorno">
+        <table>
+               <tr>
+                    <td class = "celdalogoministerio">
+                    
+                    
+                    
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    
+                    
+                        </td>
+               </tr>
+               <tr>
+                    <
+        </table>
+        <div>
+        <asp:ContentPlaceHolder ID="CPHbotones" runat="server">
+            <div class = "controlesderecha">
+                    <asp:Image ID="imgPrincipalMinisterio" runat="server" 
+                        ImageUrl="~/bg_banderin.jpg" Height="73px" Width="1000px" />
+&nbsp;<asp:Button ID="btnMenu" runat="server" Text="Menú" onclick="btnMenu_Click" CssClass="boton"/>
+                    <asp:Button ID="btnexit" runat="server" Text="Cerrar Sesión" 
+                        onclick="btnexit_Click" CssClass="boton"/>
+            </div>
+                
+            
+            </asp:ContentPlaceHolder>  
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+            
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
+

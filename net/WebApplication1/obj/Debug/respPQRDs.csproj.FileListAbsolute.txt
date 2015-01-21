@@ -1,0 +1,15 @@
+C:\JairoHamón\Proyectos\respPQR\respPQR\WebApplication1\bin\WebApplication1.dll
+C:\JairoHamón\Proyectos\respPQR\respPQR\WebApplication1\bin\WebApplication1.pdb
+C:\JairoHamón\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\JairoHamón\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\WebApplication1.dll
+C:\JairoHamón\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\bin\WebApplication1.dll
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\bin\WebApplication1.pdb
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\WebApplication1.dll
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\Interop.ADODB.dll
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\Interop.CDO.dll
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\obj\Debug\respPQRDs.csproj.ResolveComReference.cache
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\bin\Interop.ADODB.dll
+C:\JairoHamon\Proyectos\respPQR\respPQR\WebApplication1\bin\Interop.CDO.dll
