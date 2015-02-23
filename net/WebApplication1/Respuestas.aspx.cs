@@ -94,7 +94,7 @@ namespace WebApplication1
                     Entro = "SI";
                     SqlParameter[] param = new SqlParameter[3];
                     param[0] = new SqlParameter("@codigo", SqlDbType.Int);
-                    param[0].Value = dplModelos.SelectedValue;
+                    param[0].Value = dplModelos.SelectedValue;  //param[0] recibe el valor seleccionado en la lista dplModelos
                     param[1] = new SqlParameter("@numero", SqlDbType.VarChar, 50);
                     param[1].Value = txtCedula.Text;
                     param[2] = new SqlParameter("@email", SqlDbType.VarChar, 100);
@@ -106,10 +106,13 @@ namespace WebApplication1
                     if (DSResp.Tables[0].Rows.Count == 1)
                     {
                         DataTable dtresp = DSResp.Tables[0];
-                        DataRow drresp = dtresp.Rows[0];
+                        DataRow drresp = dtresp.Rows[0];    //Toma la fila del DataTable dtresp y se lo asigna a la fila drresp
+
                         if (chkPQRSD.Checked == true)
                         {
                             enviarcorreo("pqrsd@serviciodeempleo.gov.co", "maria.numa@serviciodeempleo.gov.co", drresp["respuesta"].ToString(), "Respuesta PQRSD: " + txtConsecutivo.Text.ToString());
+
+                            // la parte del código que dice "drresp["respuesta"].ToString()" significa que en el DataRow drresp tome la columna respuesta y conviértala a una cadena. 
                         }
                         else 
                         {
@@ -420,6 +423,11 @@ namespace WebApplication1
                 txtConsecutivo.Visible = false;
                 txtAsunto.Text = "RTA:" + txtCedula.Text + " / " + txtemail.Text;
             }
+        }
+
+        protected void dplModelos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -36,9 +36,12 @@ namespace WebApplication1
             Response.Redirect("Respuestas.aspx");
         }
 
-        protected void btnllamadas_Click(object sender, EventArgs e)
+
+
+        protected void btnEmpleador_Click(object sender, EventArgs e)
         {
-            Response.Redirect("llamadas.aspx");
+            //Response.Redirect("Prueb3.aspx");
+            Response.Redirect("Form_FechaVacantes.aspx");
         }
 
     }

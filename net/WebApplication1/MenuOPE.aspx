@@ -13,22 +13,21 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnRespuestasPQRs" runat="server" Text="Respuestas a PQRs" 
-                    CssClass="boton" onclick="btnRespuestasPQRs_Click" Width="190px" />
+                <asp:Label ID="Label3" runat="server" Text="" CssClass = "LetraNormal">Buscador</asp:Label>&nbsp;
+
             </td>
-            <td>
-                <asp:Label ID="Label3" runat="server" Text="" CssClass = "LetraNormal">Permite dar respuestas a PQRs con formatos preestablecidos</asp:Label></td></td>
+            <td><asp:Button ID="btnRespuestasPQRs" runat="server" Text="Reinicio de contraseña" 
+                    CssClass="boton" onclick="btnRespuestasPQRs_Click" Width="202px" />
+            </td>
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnllamadas" runat="server" Text="Apoyo a Llamadas" CssClass="boton"
-                    Width="190px" onclick="btnllamadas_Click" Enabled="False" 
-                    Visible="False" />
+               <asp:Label ID="Label2" runat="server" Text="" CssClass = "LetraNormal">Empleador</asp:Label>
             </td>
             <td>
-                <asp:Label ID="Label5" runat="server" 
-                    Text="Base de Información de conocimiento." CssClass = "LetraNormal" 
-                    Visible="False"></asp:Label></td>
+                <asp:Button ID="btnEmpleador" runat="server" Text="Cambio de Fecha de Vacantes" 
+                    CssClass="boton" Width="199px" OnClick="btnEmpleador_Click" />
+            </td>
         </tr>
     </table>
     

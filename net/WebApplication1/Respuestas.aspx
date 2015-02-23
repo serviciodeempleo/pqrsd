@@ -5,21 +5,18 @@
     <div>
         <div style="margin-left: 40px">
         <br /><br />
-        <asp:Label ID="Label4" runat="server" Text="Respuesta a PQRs:" CssClass = "LetraTitulo"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text="Cambio de Contraseñas" CssClass = "LetraTitulo"></asp:Label>
         <br /><br />
-        <asp:Label ID="Label5" runat="server" Text="" CssClass = "LetraNormal">
-        Por medio de este formulario se podrá dar solución a los PQRSD y a los correos que llegan directamente a soporte.tecnologia@serviciodeempleo.gov.co, para este ultimo copie el asunto del correo y peguelo en el campo de asunto del formulario.</asp:Label>
+        <asp:Label ID="Label5" runat="server" Text="Este formulario permite realizar el restablecimiento de contraseña para que un usuario o empleador pueda ingresar a la plataforma de RedEmpleo." CssClass = "LetraNormal"></asp:Label>
             
         <br /><br />
                 <asp:Label ID="lblCedula0" runat="server" Text="Paso 1:     " 
                 CssClass = "LetraTituloVerdeNegrilla"></asp:Label>
-            </asp:DropDownList>
         
                 <br /><br />
                 <asp:Label ID="lblCedula" runat="server" Text="Numero Identificación:" CssClass = "LetraNormalNegrilla"></asp:Label>
             <asp:TextBox ID="txtCedula" runat="server" Width="162px" 
                 CssClass = "LetraNormal" MaxLength="20"></asp:TextBox>
-            </asp:DropDownList>
             <asp:Label ID="lblrespuesta" runat="server" CssClass = "LetraErro"></asp:Label>
             
             <br /><br />
@@ -46,7 +43,7 @@
             <asp:Label ID="Label6" runat="server" Text="Solicitud:" 
             CssClass = "LetraNormalNegrilla"></asp:Label>
             <asp:DropDownList ID="dplModelos" runat="server" Height="25px" 
-            Width="272px" CssClass = "LetraNormal" Enabled="False">
+            Width="272px" CssClass = "LetraNormal" Enabled="False" OnSelectedIndexChanged="dplModelos_SelectedIndexChanged">
             </asp:DropDownList><br /><br />
             <asp:Label ID="Label3" runat="server" Text="E-mail:" CssClass = "LetraNormalNegrilla"></asp:Label>
             <asp:TextBox ID="txtemail" runat="server" Width="354px" 
